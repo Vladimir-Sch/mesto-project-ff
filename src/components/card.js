@@ -1,11 +1,13 @@
-// @todo: Темплейт карточки
-const cardTemplate = document.querySelector("#card-template").content;
-
-// @todo: DOM узлы
-const placesList = document.querySelector('.places__list');
+//Темплейт карточки
+const cardTemplate = document.querySelector('#card-template').content;
 
 // @todo: Функция создания карточки
-function createCard (cards, deleteCard) {
+function createCard (
+  cards,
+  deleteCard,
+  likeCardToggle,
+  openImage  
+) {
   const newCard = cardTemplate.querySelector('.card').cloneNode(true);
   const cardImage = newCard.querySelector('.card__image');
   const cardTitle = newCard.querySelector('.card__title');
@@ -18,6 +20,10 @@ function createCard (cards, deleteCard) {
   const cardDelButton = newCard.querySelector('.card__delete-button');
   cardDelButton.addEventListener('click', () => {deleteCard(newCard)});
 
+  const cardLikeButton = newCard.querySelector('.card__like-button');
+  cardLikeButton.addEventListener('click', likeCardToggle);
+  cardImage.addEventListener('click', (evt) => {openImage(evt)});
+
   return newCard;
 }
 
@@ -26,8 +32,9 @@ function deleteCard (newCard) {
   newCard.remove();
 }
 
-// @todo: Вывести карточки на страницу
-initialCards.forEach(item => {
-  const newCard = createCard(item, deleteCard);
-  placesList.append(newCard);
-})
+// Функция like карточки
+function likeCardToggle(evt) {
+  evt.target.classList.toggle('card__like-button_is-active');
+}
+
+export {createCard, deleteCard, likeCardToggle};

@@ -1,13 +1,13 @@
 //функции для работы модульных окон (попапов)
 function openModal(popup) {
   popup.classList.add('popup_is-opened'); 
-  popup.addEventListener('click', closeModalOverlay);
+  popup.addEventListener('mousedown', closeModalOverlay);
   document.addEventListener('keydown', closeModalEsc);
 }
 
 function closeModal(popup) {
   popup.classList.remove('popup_is-opened');
-  popup.removeEventListener('click', closeModalOverlay);
+  popup.removeEventListener('mousedown', closeModalOverlay);
   document.removeEventListener('keydown', closeModalEsc);
 }
 

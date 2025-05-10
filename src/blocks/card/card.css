@@ -13,3 +13,18 @@
   position: relative;
   overflow: hidden;
 }
+
+.card__like {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.card__like_count {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
